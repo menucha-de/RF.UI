@@ -1,0 +1,6 @@
+Bundle-Name: Ha-VIS Net UI RF
+Bundle-SymbolicName: havis.net.ui.rf
+Bundle-Version: 2.6.1
+Implementation-Version: 2.6
+Bundle-ManifestVersion: 2
+Bundle-Vendor: HARTING IT_SD

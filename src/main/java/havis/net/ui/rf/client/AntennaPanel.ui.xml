@@ -1,0 +1,55 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:r="urn:import:havis.net.ui.rf.client">
+	<ui:with type="havis.net.ui.shared.resourcebundle.ResourceBundle" field="res" />
+	<ui:with type="havis.net.ui.shared.resourcebundle.ConstantsResource" field="lang" />
+	<ui:style>
+
+	.inputOuter {
+		font-family: sans-serif;
+		color: graytext;
+		border: 1px #d3d3d3 solid;
+		border-radius: 22px;
+		padding-left: 15px;
+		padding-right: 15px;
+		box-shadow: inset 1px 2px 5px 1px rgba(0, 0, 0, 0.1);
+		display: flex;
+		align-items: center;
+		width: 4em;
+	}
+	
+
+	.inputOuter input {
+		text-align: right;
+		border: 0;
+		padding-right: 5px;
+		width: 1.8em;
+		font-size: 1em;
+	}
+	
+	.inputOuter input:disabled {
+		color: graytext;
+		background-color: transparent;
+	}
+	
+	.antennaSwitch {
+		margin: 0.2em 0 !important;
+		width: 3em !important;
+	}
+	</ui:style>
+	<g:FlowPanel addStyleNames="{res.css.row} {res.css.config}">
+		<g:Label ui:field="antennaLabel" addStyleNames="{res.css.label}"><ui:text from="{lang.antenna}"></ui:text></g:Label>
+		<r:AntennaSwitch ui:field="antennaSwitch" addStyleNames="{style.antennaSwitch}" />
+		<g:FlowPanel addStyleNames="{style.inputOuter}">
+			<g:TextBox ui:field="dbmValue" enabled="false" styleName="" /><g:InlineLabel>dBm</g:InlineLabel>
+		</g:FlowPanel>
+		<g:FlowPanel addStyleNames="{style.inputOuter}">
+			<g:TextBox ui:field="mwValue" enabled="false" readOnly="true" styleName="" /><g:InlineLabel>mW</g:InlineLabel>
+		</g:FlowPanel>
+		<g:FlowPanel ui:field="powerScale" stylePrimaryName="webui-SpinScale" addStyleNames="empty">
+			<g:Button addStyleNames="minus" ui:field="minus" />
+			<g:SimplePanel addStyleNames="scale" ui:field="scale" />
+			<g:Button addStyleNames="plus" ui:field="plus" />
+		</g:FlowPanel>
+	</g:FlowPanel>
+</ui:UiBinder> 

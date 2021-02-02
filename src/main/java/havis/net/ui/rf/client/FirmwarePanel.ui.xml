@@ -1,0 +1,51 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:with type="havis.net.ui.shared.resourcebundle.ResourceBundle" field="res" />
+	<ui:with type="havis.net.ui.shared.resourcebundle.ConstantsResource" field="lang" />
+	<ui:style>
+	.version {
+		font-size: 1em;
+		width: 170px;
+		height: 30px;
+		text-align: right;
+	}
+	.version:disabled {
+		color: graytext;
+		background-color: transparent;
+	}
+	.install-button {
+		border-radius: 16px;
+		font-weight: bold;
+		text-align: center;
+		width: 8em;
+		line-height: 32px;
+		padding-left: 2em;
+		position: relative;
+		font-size: 1em;
+	}
+	
+	.install-button:disabled {
+		color: graytext;
+		background: linear-gradient(to bottom, #ffffff, #e2e2e2)
+	}
+	.wide-label {
+		font-weight: bold;
+		width: 9em;
+	}
+	</ui:style>
+	<g:HTMLPanel>
+		<g:FlowPanel addStyleNames="{res.css.config} {res.css.row}">
+			<g:Label ui:field="label" addStyleNames="{style.wide-label}">Firmware</g:Label>
+			<g:TextBox ui:field="version" addStyleNames="{style.version}" enabled="false" />
+			<g:ToggleButton ui:field="install" addStyleNames="{res.css.button} {res.css.active} {style.install-button}">Install
+				<g:upFace>Install</g:upFace>
+				<g:downFace>Installing <img src="{res.llrpListLoading.getSafeUri}" class="{res.css.load}"/></g:downFace>
+			</g:ToggleButton>
+		</g:FlowPanel>
+		<g:FlowPanel addStyleNames="{res.css.config} {res.css.row}">
+			<g:Label addStyleNames="{style.wide-label}">REST Interface</g:Label>
+			<g:Anchor href="openapi/?path=/Apps/rest/rf" target="_blank">Interactive Documentation</g:Anchor>
+		</g:FlowPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

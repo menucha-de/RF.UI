@@ -1,0 +1,17 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:t="urn:import:havis.net.ui.shared.client.table">
+	<ui:style>
+	.table {
+		margin: 1em 0em;
+	}
+	.outer {
+		margin-left: 0.3em;
+	}
+	</ui:style>
+	<g:HTMLPanel>
+		<div class="{style.outer}">
+			<t:CustomTable ui:field="filterTable" addStyleNames="{style.table}" />
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 

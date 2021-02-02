@@ -1,0 +1,131 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:r="urn:import:havis.net.ui.rf.client"
+	xmlns:c="urn:import:havis.net.ui.shared.client"
+	xmlns:l="urn:import:havis.net.ui.shared.client.list" xmlns:s="urn:import:havis.net.ui.shared.client.widgets">
+	<ui:with type="havis.net.ui.shared.resourcebundle.ResourceBundle" field="res"></ui:with>
+	<ui:with type="havis.net.ui.shared.resourcebundle.ConstantsResource" field="lang" />
+	<ui:style>
+	.ui {
+		font-size: 1.5em;
+		overflow: auto;
+	}
+	
+	.indent {
+		margin-left: 0.3em;
+	}
+	.region {
+		width: 8.8em;
+		height: 32px;
+		font-size: 1em;
+	}
+	
+	.tags-list {
+		padding-bottom: 1em;
+		padding-top: 0.5em;
+		padding-left: 0.3em;
+		border-top: 1px solid lightgrey;
+	}
+	
+	.tags-list td {
+		padding: 0.4em 0;
+
+	}
+	
+	.tags-list colgroup > col:nth-child\(1\) {
+		width: 5em;
+	}
+	.tags-list colgroup > col:nth-child\(2\) {
+		/*width: 40em;*/
+	}
+	
+	.tags-list > div > table:first-child {
+		border-bottom: 1px solid lightgrey;
+	}
+	
+	.tags-list colgroup > col:nth-child\(3\) {
+		width: 13em;
+	}
+	.tags-list colgroup > col:nth-child\(4\) {
+		width: 13em;
+	}
+	.tags-list colgroup > col:nth-child\(5\) {
+		width: 13em;
+	}
+	.tags-list colgroup > col:nth-child\(6\) {
+		width: 13em;
+	}
+	
+	.tag-count-label {
+		font-size: 1.7em;
+		font-weight: bold;
+		border-left: 1px solid lightgrey;
+		text-align: center;
+		width: 4em;
+		margin-left: 0.5em;
+	}
+	
+	.tag-count-label.current {
+		color: black;
+	}
+	
+	.tag-count-label.absolute {
+		color: graytext;
+	}
+	.tag-count-label .kind {
+		font-size: 0.4em;
+		position: relative;
+		left: 0em;
+		top: -1.5em;
+	}
+
+	.subSections {
+		margin: 0.5em 0;
+	}
+	
+	.subSections>div {
+		border-top: 1px solid lightgrey;
+	}
+
+	.subSections>div:last-child {
+		border-bottom: 1px solid lightgrey;
+	}
+	</ui:style>
+	<g:HTMLPanel styleName="{style.ui}">
+		<s:SettingsHeader iconSrc="havis.device.rf/app.png" label="RFID Hardware" />
+		<g:FlowPanel ui:field="stackContent">
+			<g:FlowPanel addStyleNames="{res.css.configArea}" ui:field="configRows">
+				<r:RegionPanel ui:field="regionPanel" addStyleNames="{style.indent}"/>
+				<g:FlowPanel ui:field="antennas" addStyleNames="{style.indent}"/>
+				<c:ConfigurationSections addStyleNames="{style.subSections}">
+					<r:SettingsPanel ui:field="settings" name="Inventory Settings" />
+					<r:FilterPanel ui:field="filters" name="Filter" />
+					<r:TagSmoothingPanel ui:field="tagSmoothingPanel" name="Tag Smoothing"/>
+				</c:ConfigurationSections>
+				<r:FirmwarePanel ui:field="firmwarePanel" addStyleNames="{style.indent}"/>
+			</g:FlowPanel>
+			<g:FlowPanel ui:field="inventoryPanel">
+				<g:FlowPanel addStyleNames="{res.css.inventoryPanel} {res.css.row}">
+					<g:ToggleButton ui:field="inventoryButton" addStyleNames="{res.css.button} {res.css.active} {res.css.inventoryButton}">
+						<g:upFace><ui:text from="{lang.startInventory}"></ui:text></g:upFace>
+						<g:downFace><ui:text from="{lang.stopInventory}"></ui:text> <img src="{res.llrpListLoading.getSafeUri}" class="{res.css.load}"/></g:downFace>
+					</g:ToggleButton>
+					<g:HTMLPanel addStyleNames="{style.tag-count-label} {style.current}">
+						<g:InlineLabel ui:field="countCurrent">0</g:InlineLabel>
+						<span class="{style.kind}"><ui:text from="{lang.current}" /></span>
+					</g:HTMLPanel>
+					<g:HTMLPanel addStyleNames="{style.tag-count-label} {style.absolute}">
+						<g:InlineLabel ui:field="countAbsolute">0</g:InlineLabel>
+						<span class="{style.kind}"><ui:text from="{lang.absolute}" /></span>
+					</g:HTMLPanel>
+					<g:ToggleButton ui:field="expandList" stylePrimaryName="webui-ToggleContentButton" addStyleNames="{res.css.toggleList}">
+						<g:upFace><ui:text from="{lang.expandList}"></ui:text></g:upFace>
+						<g:downFace><ui:text from="{lang.collapseList}"></ui:text></g:downFace>
+					</g:ToggleButton>
+				</g:FlowPanel>
+				<l:WidgetList ui:field="tagsList" visible="false" sortable="true" addStyleNames="{style.tags-list}" />
+			</g:FlowPanel>
+		</g:FlowPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

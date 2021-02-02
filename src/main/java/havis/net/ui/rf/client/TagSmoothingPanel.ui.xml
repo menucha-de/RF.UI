@@ -1,0 +1,91 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:s="urn:import:havis.net.ui.shared.client.widgets" xmlns:l="urn:import:havis.net.ui.rf.client">
+	<ui:with type="havis.net.ui.shared.resourcebundle.ResourceBundle"
+		field="res" />
+	<ui:with type="havis.net.ui.shared.resourcebundle.ConstantsResource"
+		field="lang" />
+	<ui:style>
+		.rows {
+			margin: 0.5em 0.3em;
+		}
+		
+		.rows>div {
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-align: center;
+			align-items: center;
+		}
+		
+		.rows>div>* {
+			margin: 0.2em 0.4em 0.2em 0;
+		}
+		
+		.rows>div>div:nth-child\(1\) {
+			font-weight: bold;
+			width: 6em;
+			white-space: nowrap;
+			margin-right: 8em;
+		}
+		
+		.rows>div>div:nth-child\(3\) {
+			font-weight: bold;
+			width: 6em;
+			white-space: nowrap;
+		}
+		
+		.rows select {
+			width: 7em;
+			height: 32px;
+			font-size: 1em;
+			box-sizing: content-box;
+		}
+		
+		.rows input {
+			width: 7em;
+			font-size: 1em;
+		}
+		
+		.rows input:disabled {
+			color: graytext;
+			background-color: transparent;
+		}
+		
+		.antennaSwitch {
+			margin: 0.2em 0 !important;
+			width: 3em !important;
+		}
+		
+		.activateLabel{
+			width: 5em !important;
+			margin-right: 0em !important;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<div class="{style.rows}">
+			<div>
+				<g:Label text="Lost Timeout"/>
+				<g:TextBox ui:field="lostTimeout"/>
+				<g:Label text="(ms)"/>
+			</div>
+			<div>
+				<g:Label text="Glimpsed Timeout"/>
+				<g:TextBox ui:field="glimpsedTimeout"/>
+				<g:Label text="(ms)"/>
+			</div>
+			<div>
+				<g:Label text="Observed Time Threshold"/>
+				<g:TextBox ui:field="observedTimeThreshold"/>
+				<g:Label text="(ms)"/>
+			</div>
+			<div>
+				<g:Label text="Observed Count Threshold"/>
+				<g:TextBox ui:field="observedCountThreshold"/>
+			</div>
+			<div>
+				<g:Label text="Activate" addStyleNames="{style.activateLabel}"/>
+				<l:SlideButton ui:field="tagSmoothingSwitch" addStyleNames="{style.antennaSwitch}"/>
+			</div>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder> 
